@@ -1,4 +1,4 @@
-package cn.lilicat;
+package cn.lilicat.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Sep 18 16:31:42 CST 2018
-apache-17.pom>alimaven=
-apache-17.pom>central=
+#Tue Sep 18 15:58:26 CST 2018
+attoparser-2.0.4.RELEASE.jar>alimaven=
+attoparser-2.0.4.RELEASE.pom>alimaven=
