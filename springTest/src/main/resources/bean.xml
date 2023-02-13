@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.springTest.test"/>
+
+    <!-- setter注入 -->
+<!--        子标签是property-->
+<!--        需要在类里写get 和 set-->
+    <bean id="user1" class="com.springTest.test.dao.UserDao1">
+        <property name="userName" value="张三"/>
+    </bean>
+
+<!--    构造器注入-->
+<!--        index从0开始-->
+<!--        子标签是constructor-arg-->
+<!--        需要在类里用构造方法传入属性-->
+    <bean id="user2" class="com.springTest.test.dao.UserDao2">
+        <constructor-arg index="0" name="userName" value="李四"/>
+    </bean>
+
+    <bean id="userDaoImplementsInitializingBean" class="com.springTest.test.dao.UserDaoImplementsInitializingBean" init-method="init"/>
+
+
+<!--    解决返回乱码-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8" />
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+</beans>

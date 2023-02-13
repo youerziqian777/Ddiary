@@ -1,2 +1,5 @@
 /.idea
 springBootTest/target/
+*.class
+*.lst
+/test/

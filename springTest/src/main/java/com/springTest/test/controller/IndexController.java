@@ -6,12 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @ClassNameIndexController
- * @Description
- * @Author
- * @Date2022/11/7 17:11
- **/
 @Configuration
 @RestController
 public class IndexController {
@@ -19,8 +13,19 @@ public class IndexController {
     @Autowired
     private IndexService indexService;
 
-    @GetMapping("/test")
-    public String test(){
-        return indexService.test();
+    @GetMapping("/test1")
+    public String test1(){
+        return indexService.test1();
     }
+
+    @GetMapping("/test2")
+    public String test2(){
+        return indexService.test2();
+    }
+
+    @GetMapping("/test3")
+    public String test3(){
+        return indexService.test3();
+    }
+
 }
