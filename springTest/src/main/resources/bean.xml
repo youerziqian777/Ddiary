@@ -11,6 +11,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+<!--    当使用 context:component-scan 后，就可以将 context:annotation-config移除-->
     <context:component-scan base-package="com.springTest.test"/>
 
     <!-- setter注入 -->
@@ -28,8 +29,25 @@
         <constructor-arg index="0" name="userName" value="李四"/>
     </bean>
 
+<!--    本来想测试@required，但是被弃用了，只能用@autowired了-->
+    <bean id="userDaoTestRequired" class="com.springTest.test.dao.UserDaoTestRequired">
+        <property name="userName" value="userDaoTestRequired"/>
+    </bean>
+
+<!--    通过init方法自定义初始化bean-->
     <bean id="userDaoImplementsInitializingBean" class="com.springTest.test.dao.UserDaoImplementsInitializingBean" init-method="init"/>
 
+<!--    内部bean-->
+    <bean id="articleContentShowDao" class="com.springTest.test.dao.ArticleShowDao">
+        <property name="articleContentDao">
+            <bean class="com.springTest.test.dao.ArticleContentDao">
+            </bean>
+        </property>
+    </bean>
+
+<!--    当一个类有多个bean的时候，通过@Qualifier来指定具体用哪个bean-->
+    <bean id="userDaoTestQualifier1" class="com.springTest.test.dao.UserDaoTestQualifier"/>
+    <bean id="userDaoTestQualifier2" class="com.springTest.test.dao.UserDaoTestQualifier"/>
 
 <!--    解决返回乱码-->
     <mvc:annotation-driven>

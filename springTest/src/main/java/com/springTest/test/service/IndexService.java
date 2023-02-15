@@ -1,11 +1,9 @@
 package com.springTest.test.service;
 
 import com.alibaba.fastjson.JSON;
-import com.springTest.test.dao.UserDao1;
-import com.springTest.test.dao.UserDao2;
-import com.springTest.test.dao.UserDao3;
-import com.springTest.test.dao.UserDaoImplementsBeanNameAware;
+import com.springTest.test.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -21,6 +19,13 @@ public class IndexService {
 
     @Autowired
     UserDao3 userDao3;
+
+    @Autowired
+    ArticleShowDao articleShowDao;
+
+    @Autowired
+    @Qualifier("userDaoTestQualifier2")
+    UserDaoTestQualifier userDaoTestQualifier;
 
     //区分构造注入和set注入
     public String test1(){
@@ -40,6 +45,20 @@ public class IndexService {
     public String test3(){
         userDao3.setUserName("王五");
         return userDao3.getUserName();
+    }
+
+    //spring内部bean
+    public String test4(){
+        ArticleContentDao articleContentDao = articleShowDao.getArticleContentDao();
+        articleContentDao.setText("111111");
+        articleShowDao.setArticleContentDao(articleContentDao);
+        return articleShowDao.getArticleContentDao().getText();
+    }
+
+//    当一个类有多个bean的时候，通过@Qualifier来指定具体用哪个bean
+    public String test5(){
+        userDaoTestQualifier.setUserName("userDaoTestQualifier2");
+        return userDaoTestQualifier.getUserName();
     }
 
 }

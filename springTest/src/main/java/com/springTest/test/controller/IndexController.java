@@ -28,4 +28,14 @@ public class IndexController {
         return indexService.test3();
     }
 
+    @GetMapping("/test4")
+    public String test4 (){
+        return indexService.test4();
+    }
+
+    @GetMapping("/test5")
+    public String test5 (){
+        return indexService.test5();
+    }
+
 }
