@@ -22,7 +22,43 @@
 			<artifactId>fastjson</artifactId>
 			<version>2.0.9</version>
 		</dependency>
+
+<!--		使用事务需要使用此包-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>6.0.5</version>
+		</dependency>
+
+		<!--		aop切面相关-->
+<!--		提供了AOP的核心功能和接口-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>6.0.5</version>
+		</dependency>
+
+<!--		提供了对AspectJ的支持和集成-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>6.0.5</version>
+		</dependency>
+
+<!--		提供了AspectJ编译器和运行时库-->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.9</version>
+		</dependency>
+<!--提供了一些AOP的公共接口-->
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
+
 
 	<build>
 		<resources>
@@ -35,6 +71,8 @@
 				</includes>
 			</resource>
 		</resources>
+
+
 
 		<plugins>
 <!--			告诉maven用哪个版本的java编译，不指定的话，每次重新编译java版本都会变为1.5-->

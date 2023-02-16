@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+//应该有个impl，但是忘记了，忘记了这个就不写了
 @Service
 public class IndexService {
     @Autowired
@@ -59,6 +60,10 @@ public class IndexService {
     public String test5(){
         userDaoTestQualifier.setUserName("userDaoTestQualifier2");
         return userDaoTestQualifier.getUserName();
+    }
+
+    public String exception() throws Exception {
+        throw new Exception();
     }
 
 }

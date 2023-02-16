@@ -1,6 +1,7 @@
 package com.springTest.test.controller;
 
 import com.springTest.test.service.IndexService;
+import com.springTest.test.service.TransactionTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,9 @@ public class IndexController {
 
     @Autowired
     private IndexService indexService;
+
+    @Autowired
+    private TransactionTestService transactionTestService;
 
     @GetMapping("/test1")
     public String test1(){
@@ -38,4 +42,13 @@ public class IndexController {
         return indexService.test5();
     }
 
+    @GetMapping("/test6")
+    public String test6 (){
+        return transactionTestService.getId();
+    }
+
+    @GetMapping("/exception")
+    public void exception () throws Exception {
+        indexService.exception();
+    }
 }
