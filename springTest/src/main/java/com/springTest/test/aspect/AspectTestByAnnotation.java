@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 /**
- * @Description 切面例子
+ * @Description 通过注解来实现切面例子
  * 如果要正常返回，可以访问http://localhost:8080/springTest/app/test1
  * 如果要异常返回，可以访问http://localhost:8080/springTest/app/exception
  * @Date 2023/2/16 20:43
@@ -15,24 +15,24 @@ import java.util.Arrays;
 @Aspect
 @Component
 //切面本身得是一个bean
-public class AspectTest {
-    @Before("execution(* com.springTest.test.service.IndexService.*(..))")
+public class AspectTestByAnnotation {
+    @Before("execution(* com.springTest.test.service.IndexService.test1(..))")
     //execution匹配的就是pointcut，@Before、@After这些就是advice
     public void aspectTestBefore(){
         System.out.println("切面@Before - 在连接点之前执行的通知");
     }
 
-    @After("execution(* com.springTest.test.service.IndexService.*(..))")
+    @After("execution(* com.springTest.test.service.IndexService.test1(..))")
     public void aspectTestAfter(){
         System.out.println("切面@After - 不管是异常退出还是正常返回，都在连接点之后执行的通知");
     }
 
-    @AfterReturning("execution(* com.springTest.test.service.IndexService.*(..))")
+    @AfterReturning("execution(* com.springTest.test.service.IndexService.test1(..))")
     public void aspectTestAfterReturning(){
         System.out.println("切面@AfterReturning - 正常返回后执行的通知");
     }
 
-    @AfterThrowing("execution(* com.springTest.test.service.IndexService.*(..))")
+    @AfterThrowing("execution(* com.springTest.test.service.IndexService.exception(..))")
     public void aspectTestAfterThrowing(){
         System.out.println("切面@AfterThrowing - 异常退出后执行的通知");
     }

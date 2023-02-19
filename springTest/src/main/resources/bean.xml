@@ -52,6 +52,17 @@
     <bean id="userDaoTestQualifier1" class="com.springTest.test.dao.UserDaoTestQualifier"/>
     <bean id="userDaoTestQualifier2" class="com.springTest.test.dao.UserDaoTestQualifier"/>
 
+<!--    通过spring API来实现切面，前置通知-->
+    <bean id="aspectTestBySpringAPI" class="com.springTest.test.aspect.AspectTestBySpringAPI"/>
+    <aop:config>
+        <aop:aspect ref="aspectTestBySpringAPI">
+<!--            有两种写的方式，被注释的是一种，没被注释的是一种-->
+            <aop:pointcut id="pointcut" expression="execution(* com.springTest.test.service.IndexService.test2(..))"/>
+            <aop:before method="before" pointcut-ref="pointcut"/>
+<!--            <aop:before method="before" pointcut="execution(* com.springTest.test.service.IndexService.test2(..))"/>-->
+        </aop:aspect>
+    </aop:config>
+
 <!--    解决返回乱码-->
     <mvc:annotation-driven>
         <mvc:message-converters>
