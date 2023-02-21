@@ -63,6 +63,23 @@
         </aop:aspect>
     </aop:config>
 
+    <!--数据连接池配置-->
+<!--    本来想用DriverManager，但是关闭web的时候报似乎启动了一个名为[mysql-cj-abandoned-connection-cleanup]的线程无法关闭，可能导致内存溢出的错误-->
+<!--    说是如果web应用程序有MySQL JDBC驱动程序的副本，Tomcat可能会选择web应用程序的副本而不是全局的副本-->
+<!--    而DriverManager是一个负责加载数据库驱动程序和创建数据库连接的类，每次都要创建一个新的数据库连接，需要手动管理数据库的打开和关闭，-->
+<!--    数据库连接池就不一样了，可以自己管理数据库连接的生命周期，避免过多或过少的连接导致问题-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC"/>
+        <property name="username" value="admin"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
 <!--    解决返回乱码-->
     <mvc:annotation-driven>
         <mvc:message-converters>

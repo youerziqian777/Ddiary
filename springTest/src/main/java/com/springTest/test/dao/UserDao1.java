@@ -8,6 +8,16 @@ public class UserDao1 {
     private String age; // 年龄
     private String address; // 家庭地址
 
+    private String password; //密码
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }

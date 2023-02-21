@@ -10,7 +10,11 @@ public class UserDao3 {
     private String sex; // 性别
     private String age; // 年龄
     private String address; // 家庭地址
+    private String password; //密码
 
+    public String getPassword() {
+        return password;
+    }
     public int getId() {
         return id;
     }

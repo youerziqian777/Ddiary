@@ -8,6 +8,8 @@ public class UserDao {
     private String age; // 年龄
     private String address; // 家庭地址
 
+    private String password; //密码
+
     public int getId() {
         return id;
     }
@@ -46,5 +48,13 @@ public class UserDao {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
