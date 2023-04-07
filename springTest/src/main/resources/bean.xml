@@ -80,6 +80,14 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+<!--    注入一个 null 和一个空字符串-->
+    <bean id="autowiredNull" class="com.springTest.test.dao.ArticleShowDao">
+        <property name="articleContentDao">
+                <null/>
+        </property>
+        <property name="title" value="#{null}"></property>
+    </bean>
+
 <!--    解决返回乱码-->
     <mvc:annotation-driven>
         <mvc:message-converters>

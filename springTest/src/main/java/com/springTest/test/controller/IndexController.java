@@ -65,4 +65,9 @@ public class IndexController {
     public void postConstructAndPreDestroyTestService (){
         postConstructAndPreDestroyTestService.test();
     }
+
+    @GetMapping("/test7")
+    public void test7 (){
+        indexService.test7();
+    }
 }

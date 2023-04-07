@@ -25,4 +25,6 @@ public interface IndexService {
 //    使用jdbcTemplate查询数据库
     String jdbcTemplateTest();
 
+    //注入一个 null 和一个空字符串
+    void test7();
 }

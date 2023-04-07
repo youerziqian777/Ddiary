@@ -7,6 +7,7 @@ import com.springTest.test.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class IndexServiceImpl implements IndexService {
     UserDao3 userDao3;
 
     @Autowired
+    @Qualifier("articleContentShowDao")
     ArticleShowDao articleShowDao;
 
     @Autowired
@@ -31,6 +33,10 @@ public class IndexServiceImpl implements IndexService {
 
     @Autowired
     JdbcTemplateTestMapper jdbcTemplateTestMapper;
+
+    @Autowired
+    @Qualifier("autowiredNull")
+    ArticleShowDao autowiredNull;
 
     //区分构造注入和set注入
     public String test1(){
@@ -76,4 +82,14 @@ public class IndexServiceImpl implements IndexService {
         return jdbcTemplateTestMapper.getPassword("犁牛");
     }
 
+    //注入一个 null 和一个空字符串
+    @Override
+    public void test7() {
+        if(autowiredNull.getArticleContentDao() == null){
+            System.out.println("对象为空");
+        }
+        if("".equals(autowiredNull.getTitle()) || (autowiredNull.getTitle() == null)){
+            System.out.println("字符串为空");
+        }
+    }
 }
