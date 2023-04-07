@@ -2,4 +2,3 @@
 springBootTest/target/
 *.class
 *.lst
-/test/
