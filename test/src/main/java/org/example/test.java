@@ -1,22 +1,25 @@
 package org.example;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+final class A{
+    int x = 1;
 
-class A{
-    String a="111";
-
-    public String getA() {
-        return a;
+    public int getX() {
+        return x;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
 }
-public class test{
-  public static void main(String[] args) {
-
-  }
+public class Test {
+    public static void main(String[] args) {
+        A a = new A();
+        A b = new A();
+        System.out.println(a.getX());
+        a.setX(5);
+        a = b;
+        System.out.println(a.getX());
+    }
 
 }
 
